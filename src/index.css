@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'League Spartan', sans-serif;
+    scroll-behavior: smooth;
+  }
+}
+
+.gradient-bg {
+  background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+}
+
+.service-card {
+  @apply p-6 rounded-xl border border-gray-800 hover:border-gray-700 transition-all duration-300 bg-black/50 backdrop-blur-sm;
+}
+
+.nav-link {
+  @apply text-gray-300 hover:text-white transition-colors duration-300;
+}
