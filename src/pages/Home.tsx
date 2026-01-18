@@ -4,7 +4,7 @@ import { Zap, CheckCircle, Users, TrendingUp, Rocket, Award, Instagram, Globe, S
 import { Link } from 'react-router-dom';
 
 const stats = [
-  { value: '₹50Cr+', label: 'Funding Raised by Clients' },
+  { value: '$10M+', label: 'Funding Raised by Clients' },
   { value: '15+', label: 'Successful MVPs' },
   { value: '30 Days', label: 'Average Delivery' },
   { value: '100%', label: 'Client Satisfaction' }
@@ -294,7 +294,7 @@ export function Home() {
               <p className="text-orange-300 font-semibold text-sm">Only 2 spots left for February</p>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Ready to Launch Your MVP?</h2>
-            <p className="text-xl text-gray-300 mb-2">Join founders who've raised ₹50Cr+ with software we built.</p>
+            <p className="text-xl text-gray-300 mb-2">Join founders who've raised $10M+ with software we built.</p>
             <p className="text-lg text-gray-400 mb-8">Book your free strategy call today — no obligation.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link to="/contact">
