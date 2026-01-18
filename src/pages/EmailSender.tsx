@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Lock, Upload, Send, FileText, Trash2, Paperclip, AlertCircle, CheckCircle, Loader2 } from 'lucide-react';
+import { Lock, Upload, Send, FileText, Trash2, Paperclip, AlertCircle, CheckCircle, Loader2, Plus, User } from 'lucide-react';
 
 interface Recipient {
   name: string;
@@ -27,6 +27,11 @@ export function EmailSender() {
   const [isSending, setIsSending] = useState(false);
   const [emailStatuses, setEmailStatuses] = useState<EmailStatus[]>([]);
   const [sendProgress, setSendProgress] = useState({ sent: 0, failed: 0, total: 0 });
+
+  // Manual recipient entry
+  const [manualName, setManualName] = useState('');
+  const [manualEmail, setManualEmail] = useState('');
+  const [manualCompany, setManualCompany] = useState('');
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const attachmentInputRef = useRef<HTMLInputElement>(null);
@@ -112,6 +117,27 @@ export function EmailSender() {
     setEmailStatuses(prev => prev.filter((_, i) => i !== index));
   };
 
+  const addManualRecipient = () => {
+    if (!manualEmail.trim()) {
+      alert('Email is required');
+      return;
+    }
+
+    const newRecipient: Recipient = {
+      name: manualName.trim(),
+      email: manualEmail.trim(),
+      company: manualCompany.trim(),
+    };
+
+    setRecipients(prev => [...prev, newRecipient]);
+    setEmailStatuses(prev => [...prev, { email: newRecipient.email, status: 'pending' }]);
+
+    // Clear inputs
+    setManualName('');
+    setManualEmail('');
+    setManualCompany('');
+  };
+
   const personalizeEmail = (template: string, recipient: Recipient): string => {
     let personalized = template;
     personalized = personalized.replace(/\{\{name\}\}/gi, recipient.name || 'there');
@@ -130,7 +156,7 @@ export function EmailSender() {
 
   const sendEmails = async () => {
     if (!subject || !emailBody || recipients.length === 0) {
-      alert('Please fill in subject, email body, and upload recipients CSV');
+      alert('Please fill in subject, email body, and add at least one recipient');
       return;
     }
 
@@ -276,15 +302,57 @@ export function EmailSender() {
           <div className="grid lg:grid-cols-2 gap-8">
             {/* Left Column - Email Composition */}
             <div className="space-y-6">
-              {/* CSV Upload */}
+              {/* Recipients Section */}
               <div className="bg-black/50 border border-gray-800 rounded-xl p-6">
                 <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
-                  <FileText size={20} className="text-blue-500" />
-                  Recipients CSV
+                  <User size={20} className="text-blue-500" />
+                  Add Recipients
                 </h2>
-                <p className="text-gray-400 text-sm mb-4">
-                  Upload a CSV with columns: name, email, company (and any custom fields)
-                </p>
+
+                {/* Manual Entry */}
+                <div className="mb-6">
+                  <p className="text-gray-400 text-sm mb-3">Add manually:</p>
+                  <div className="space-y-3">
+                    <input
+                      type="text"
+                      value={manualName}
+                      onChange={(e) => setManualName(e.target.value)}
+                      placeholder="Name"
+                      className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 text-white text-sm focus:border-blue-500 focus:outline-none"
+                    />
+                    <input
+                      type="email"
+                      value={manualEmail}
+                      onChange={(e) => setManualEmail(e.target.value)}
+                      placeholder="Email *"
+                      className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 text-white text-sm focus:border-blue-500 focus:outline-none"
+                    />
+                    <input
+                      type="text"
+                      value={manualCompany}
+                      onChange={(e) => setManualCompany(e.target.value)}
+                      placeholder="Company"
+                      className="w-full bg-black border border-gray-700 rounded-lg px-4 py-2 text-white text-sm focus:border-blue-500 focus:outline-none"
+                    />
+                    <button
+                      onClick={addManualRecipient}
+                      className="w-full bg-gray-800 hover:bg-gray-700 text-white py-2 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2"
+                    >
+                      <Plus size={16} />
+                      Add Recipient
+                    </button>
+                  </div>
+                </div>
+
+                {/* Divider */}
+                <div className="flex items-center gap-4 my-6">
+                  <div className="flex-1 h-px bg-gray-700"></div>
+                  <span className="text-gray-500 text-sm">OR</span>
+                  <div className="flex-1 h-px bg-gray-700"></div>
+                </div>
+
+                {/* CSV Upload */}
+                <p className="text-gray-400 text-sm mb-3">Upload CSV file:</p>
                 <input
                   type="file"
                   accept=".csv"
@@ -294,15 +362,17 @@ export function EmailSender() {
                 />
                 <button
                   onClick={() => fileInputRef.current?.click()}
-                  className="w-full border-2 border-dashed border-gray-700 rounded-lg p-6 text-center hover:border-blue-500 transition-colors"
+                  className="w-full border-2 border-dashed border-gray-700 rounded-lg p-4 text-center hover:border-blue-500 transition-colors"
                 >
-                  <Upload className="mx-auto mb-2 text-gray-400" size={32} />
-                  <p className="text-gray-400">Click to upload CSV file</p>
+                  <Upload className="mx-auto mb-2 text-gray-400" size={24} />
+                  <p className="text-gray-400 text-sm">Click to upload CSV</p>
+                  <p className="text-gray-600 text-xs mt-1">Columns: name, email, company</p>
                 </button>
+
                 {recipients.length > 0 && (
                   <p className="text-green-400 mt-4 flex items-center gap-2">
                     <CheckCircle size={16} />
-                    {recipients.length} recipients loaded
+                    {recipients.length} recipient{recipients.length !== 1 ? 's' : ''} added
                   </p>
                 )}
               </div>
@@ -408,7 +478,7 @@ Your Name`}
             <div className="bg-black/50 border border-gray-800 rounded-xl p-6 h-fit max-h-[80vh] overflow-y-auto">
               <h2 className="text-xl font-bold mb-4">Recipients ({recipients.length})</h2>
               {recipients.length === 0 ? (
-                <p className="text-gray-500 text-center py-8">Upload a CSV to see recipients</p>
+                <p className="text-gray-500 text-center py-8">Add recipients manually or upload a CSV</p>
               ) : (
                 <div className="space-y-2">
                   {recipients.map((recipient, index) => (
