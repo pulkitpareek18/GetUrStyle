@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { CheckCircle } from 'lucide-react';
+import { CheckCircle, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export function Pricing() {
@@ -37,21 +37,34 @@ export function Pricing() {
               Complete Startup MVP Package
             </div>
             <div className="p-12">
-              <div className="text-center mb-12">
+              <div className="text-center mb-8">
+                {/* Price Anchoring */}
+                <p className="text-gray-500 text-sm mb-2">Agencies typically charge $15k–$30k for similar scope</p>
                 <div className="text-5xl font-bold text-blue-400 mb-2">$4,999</div>
                 <p className="text-gray-400 text-lg">One-time investment</p>
                 <p className="text-gray-300 text-sm mt-4">Everything you need to launch your MVP</p>
               </div>
 
-              <Link to="/contact" className="block mb-10">
+              <Link to="/contact" className="block mb-6">
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   className="w-full bg-blue-500 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-600 transition-colors duration-300"
                 >
-                  Start Your MVP
+                  Book a Free Strategy Call
                 </motion.button>
               </Link>
+
+              {/* Delivery Guarantee */}
+              <div className="bg-green-500/10 border border-green-500/30 rounded-lg p-4 mb-10">
+                <div className="flex items-start gap-3">
+                  <Shield className="text-green-500 flex-shrink-0 mt-0.5" size={20} />
+                  <div>
+                    <p className="text-green-400 font-semibold text-sm">30-Day Delivery Guarantee</p>
+                    <p className="text-gray-400 text-sm">If we miss the agreed deadline, you get a partial refund — no questions asked.</p>
+                  </div>
+                </div>
+              </div>
 
               <div className="space-y-4">
                 <div className="text-lg font-semibold text-white mb-6">What's Included:</div>
@@ -155,42 +168,42 @@ export function Pricing() {
           transition={{ duration: 0.8 }}
           className="max-w-3xl mx-auto"
         >
-          <h2 className="text-3xl font-bold mb-12 text-center">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold mb-12 text-center">Founder FAQs</h2>
           <div className="space-y-6">
+            <div className="bg-black/50 border border-gray-800 rounded-lg p-6">
+              <h3 className="font-bold text-lg mb-3">Who owns the code?</h3>
+              <p className="text-gray-400">
+                You do. 100% ownership of all source code, documentation, and architecture. No licensing fees, no strings attached.
+              </p>
+            </div>
+            <div className="bg-black/50 border border-gray-800 rounded-lg p-6">
+              <h3 className="font-bold text-lg mb-3">What's the tech stack?</h3>
+              <p className="text-gray-400">
+                We use modern, battle-tested technologies: React/Next.js for frontend, Node.js/Python for backend, PostgreSQL/MongoDB for databases, and deploy on AWS/Vercel/Railway.
+              </p>
+            </div>
+            <div className="bg-black/50 border border-gray-800 rounded-lg p-6">
+              <h3 className="font-bold text-lg mb-3">What happens after the 30 days?</h3>
+              <p className="text-gray-400">
+                You get 30 days of post-launch support included. After that, you can hire your own team, continue with us on retainer, or maintain it independently. We provide full documentation and handoff training.
+              </p>
+            </div>
+            <div className="bg-black/50 border border-gray-800 rounded-lg p-6">
+              <h3 className="font-bold text-lg mb-3">Can the scope change during development?</h3>
+              <p className="text-gray-400">
+                We define the feature list upfront to protect the timeline. Minor adjustments are normal and included. Major scope changes require a conversation — we'll always be transparent about impact.
+              </p>
+            </div>
             <div className="bg-black/50 border border-gray-800 rounded-lg p-6">
               <h3 className="font-bold text-lg mb-3">Do you offer payment plans?</h3>
               <p className="text-gray-400">
-                Yes. We work with founders and can structure payments as 50/50 split or milestone-based. Contact us to discuss options.
+                Yes. We work with founders and can structure payments as 50/50 split or milestone-based. Contact us to discuss options that work for your situation.
               </p>
             </div>
             <div className="bg-black/50 border border-gray-800 rounded-lg p-6">
-              <h3 className="font-bold text-lg mb-3">What if I need more features?</h3>
+              <h3 className="font-bold text-lg mb-3">Do you build mobile apps?</h3>
               <p className="text-gray-400">
-                We focus on 10 core features to launch fast. Additional features can be built post-launch. Our 30-day support period covers minor additions.
-              </p>
-            </div>
-            <div className="bg-black/50 border border-gray-800 rounded-lg p-6">
-              <h3 className="font-bold text-lg mb-3">Do you accept equity or revenue share?</h3>
-              <p className="text-gray-400">
-                For exceptional startups with strong teams, we occasionally consider equity arrangements alongside payment. Let's talk about your project.
-              </p>
-            </div>
-            <div className="bg-black/50 border border-gray-800 rounded-lg p-6">
-              <h3 className="font-bold text-lg mb-3">What if we exceed 30 days?</h3>
-              <p className="text-gray-400">
-                We're committed to 30 days. If scope creep occurs, we discuss it upfront. We don't charge extra for going slightly over—it's a commitment we make to you.
-              </p>
-            </div>
-            <div className="bg-black/50 border border-gray-800 rounded-lg p-6">
-              <h3 className="font-bold text-lg mb-2">Do you build mobile apps?</h3>
-              <p className="text-gray-400">
-                We specialize exclusively in web MVPs. Our focus is modern web applications for maximum speed and quality delivery.
-              </p>
-            </div>
-            <div className="bg-black/50 border border-gray-800 rounded-lg p-6">
-              <h3 className="font-bold text-lg mb-3">What happens after 30 days?</h3>
-              <p className="text-gray-400">
-                After launch and 30-day support, you own your MVP completely. You can hire your own team, scale, or maintain it independently.
+                We specialize exclusively in web MVPs. Our focus allows us to deliver faster and better than generalist agencies. For mobile, we can recommend partners.
               </p>
             </div>
           </div>

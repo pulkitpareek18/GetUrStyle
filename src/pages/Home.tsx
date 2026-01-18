@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Zap, CheckCircle, Users, TrendingUp, Rocket, Award, Instagram, Globe, Shield, Clock, ArrowRight, Quote } from 'lucide-react';
+import { Zap, CheckCircle, Users, TrendingUp, Rocket, Award, Instagram, Globe, Shield, Clock, ArrowRight, Quote, X, Check, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const stats = [
@@ -89,19 +89,19 @@ export function Home() {
                   whileTap={{ scale: 0.95 }}
                   className="bg-white text-black px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors duration-300 flex items-center gap-2"
                 >
-                  Get Your Free Consultation
+                  Book a Free Strategy Call
                   <ArrowRight size={20} />
                 </motion.button>
               </Link>
               <p className="text-gray-500 text-sm flex items-center gap-2">
                 <Clock size={16} />
-                Free 15-min strategy call
+                15-min call • No commitment
               </p>
             </div>
             {/* Trust Indicator */}
             <div className="flex items-center justify-center gap-2 text-gray-400 text-sm">
               <Shield size={16} className="text-green-500" />
-              <span>Trusted by funded startups & top brands</span>
+              <span>15+ MVPs shipped for early-stage startups</span>
             </div>
           </motion.div>
         </div>
@@ -127,8 +127,61 @@ export function Home() {
         </div>
       </section>
 
+      {/* Who This Is For Section */}
+      <section className="py-16 bg-black">
+        <div className="container mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto"
+          >
+            <h2 className="text-3xl font-bold text-center mb-12">Is This Right For You?</h2>
+            <div className="grid md:grid-cols-2 gap-8">
+              {/* Not For */}
+              <div className="bg-red-500/5 border border-red-500/20 rounded-xl p-6">
+                <h3 className="text-xl font-bold mb-4 text-red-400">This is NOT for:</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3 text-gray-400">
+                    <X size={20} className="text-red-500 flex-shrink-0 mt-0.5" />
+                    <span>Idea-stage founders with no budget</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-400">
+                    <X size={20} className="text-red-500 flex-shrink-0 mt-0.5" />
+                    <span>Large enterprise software projects</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-400">
+                    <X size={20} className="text-red-500 flex-shrink-0 mt-0.5" />
+                    <span>Projects requiring 6+ months of development</span>
+                  </li>
+                </ul>
+              </div>
+              {/* For */}
+              <div className="bg-green-500/5 border border-green-500/20 rounded-xl p-6">
+                <h3 className="text-xl font-bold mb-4 text-green-400">This IS for:</h3>
+                <ul className="space-y-3">
+                  <li className="flex items-start gap-3 text-gray-300">
+                    <Check size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
+                    <span>Founders validating an idea fast</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-300">
+                    <Check size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
+                    <span>Startups preparing for fundraising</span>
+                  </li>
+                  <li className="flex items-start gap-3 text-gray-300">
+                    <Check size={20} className="text-green-500 flex-shrink-0 mt-0.5" />
+                    <span>Teams that need a production-ready MVP in 30 days</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Benefits Section */}
-      <section id="benefits" className="py-20 bg-black">
+      <section id="benefits" className="py-20 bg-black border-t border-gray-800">
         <div className="container mx-auto px-6">
           <motion.div
             initial={{ opacity: 0 }}
@@ -217,7 +270,7 @@ export function Home() {
         </div>
       </section>
 
-      {/* Why Software Only Section */}
+      {/* Process Timeline Section */}
       <section className="py-20 bg-black">
         <div className="container mx-auto px-6">
           <motion.div
@@ -225,28 +278,60 @@ export function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center"
+            className="text-center mb-12"
           >
-            <Award className="text-blue-500 mx-auto mb-6" size={48} />
-            <h2 className="text-4xl font-bold mb-4">We Build Web MVPs with AI</h2>
-            <p className="text-xl text-gray-300 mb-8">
-              By focusing exclusively on web + AI MVP development, we've perfected the process. LLM APIs make AI easy to integrate, so we build every MVP with AI capabilities built-in. No design agencies, no generalists—just pure web + AI engineering excellence.
+            <Calendar className="text-blue-500 mx-auto mb-6" size={48} />
+            <h2 className="text-4xl font-bold mb-4">The 30-Day MVP Process</h2>
+            <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+              A battle-tested process refined over 15+ successful launches. You'll know exactly what's happening every step of the way.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
-                <h3 className="text-xl font-bold mb-2">100% Focused</h3>
-                <p className="text-gray-400">No distractions. Software is all we do.</p>
-              </div>
-              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
-                <h3 className="text-xl font-bold mb-2">Expert Engineers</h3>
-                <p className="text-gray-400">Specialized team optimized for speed & quality.</p>
-              </div>
-              <div className="bg-blue-500/10 border border-blue-500/30 rounded-lg p-6">
-                <h3 className="text-xl font-bold mb-2">Proven Process</h3>
-                <p className="text-gray-400">Refined methodology from 100+ launches.</p>
-              </div>
-            </div>
           </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0 }}
+              className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 text-center"
+            >
+              <div className="text-3xl font-bold text-blue-400 mb-2">Week 1</div>
+              <h3 className="text-lg font-bold mb-2">Discovery & Design</h3>
+              <p className="text-gray-400 text-sm">Requirements, wireframes, tech architecture & project scope</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 text-center"
+            >
+              <div className="text-3xl font-bold text-blue-400 mb-2">Week 2</div>
+              <h3 className="text-lg font-bold mb-2">Core Development</h3>
+              <p className="text-gray-400 text-sm">Backend APIs, database setup & core feature implementation</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 text-center"
+            >
+              <div className="text-3xl font-bold text-blue-400 mb-2">Week 3</div>
+              <h3 className="text-lg font-bold mb-2">Features & Integrations</h3>
+              <p className="text-gray-400 text-sm">Frontend polish, payments, AI features & third-party integrations</p>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+              className="bg-blue-500/10 border border-blue-500/30 rounded-xl p-6 text-center"
+            >
+              <div className="text-3xl font-bold text-blue-400 mb-2">Week 4</div>
+              <h3 className="text-lg font-bold mb-2">Testing & Launch</h3>
+              <p className="text-gray-400 text-sm">QA testing, deployment, documentation & handoff</p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -303,7 +388,7 @@ export function Home() {
                   whileTap={{ scale: 0.95 }}
                   className="bg-white text-black px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors duration-300 flex items-center gap-2"
                 >
-                  Get Your Free Consultation
+                  Check If We're a Fit
                   <ArrowRight size={20} />
                 </motion.button>
               </Link>
