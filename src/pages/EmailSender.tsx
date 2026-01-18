@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Lock, Upload, Send, FileText, Trash2, Paperclip, AlertCircle, CheckCircle, Loader2, Plus, User } from 'lucide-react';
+import { Lock, Upload, Send, Trash2, Paperclip, AlertCircle, CheckCircle, Loader2, Plus, User, Download } from 'lucide-react';
 
 interface Recipient {
   name: string;
@@ -352,7 +352,25 @@ export function EmailSender() {
                 </div>
 
                 {/* CSV Upload */}
-                <p className="text-gray-400 text-sm mb-3">Upload CSV file:</p>
+                <div className="flex items-center justify-between mb-3">
+                  <p className="text-gray-400 text-sm">Upload CSV file:</p>
+                  <button
+                    onClick={() => {
+                      const csvContent = 'name,email,company\nJohn Doe,john@example.com,Acme Inc\nJane Smith,jane@startup.io,StartupCo';
+                      const blob = new Blob([csvContent], { type: 'text/csv' });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = 'email-recipients-template.csv';
+                      a.click();
+                      URL.revokeObjectURL(url);
+                    }}
+                    className="text-blue-400 hover:text-blue-300 text-sm flex items-center gap-1"
+                  >
+                    <Download size={14} />
+                    Download Template
+                  </button>
+                </div>
                 <input
                   type="file"
                   accept=".csv"
