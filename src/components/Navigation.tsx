@@ -27,6 +27,14 @@ export function Navigation() {
                 Services
               </NavLink>
               <NavLink 
+                to="/pricing"
+                className={({ isActive }) => 
+                  `nav-link ${isActive ? 'text-white font-semibold' : 'text-gray-300'}`
+                }
+              >
+                Pricing
+              </NavLink>
+              <NavLink 
                 to="/about"
                 className={({ isActive }) => 
                   `nav-link ${isActive ? 'text-white font-semibold' : 'text-gray-300'}`
@@ -57,6 +65,14 @@ export function Navigation() {
               }
             >
               Services
+            </NavLink>
+            <NavLink 
+              to="/pricing"
+              className={({ isActive }) => 
+                `nav-link ${isActive ? 'text-white font-semibold' : 'text-gray-300'}`
+              }
+            >
+              Pricing
             </NavLink>
             <NavLink 
               to="/about"

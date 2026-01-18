@@ -39,7 +39,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-8 text-center text-gray-400">
-          <p>&copy; 2025 GetUrStyle. All rights reserved.</p>
+          <p>&copy; 2026 GetUrStyle. All rights reserved.</p>
         </div>
       </div>
     </footer>
