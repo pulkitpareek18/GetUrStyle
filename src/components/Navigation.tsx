@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
   };
 
   return (
@@ -53,38 +57,42 @@ export function Navigation() {
             </div>
           </div>
           <button className="md:hidden" onClick={toggleMenu}>
-            <Menu size={24} />
+            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
         {isMenuOpen && (
-          <div className="md:hidden flex flex-col space-y-4 mt-4 px-4">
-            <NavLink 
-              to="/services" 
-              className={({ isActive }) => 
+          <div className="md:hidden flex flex-col space-y-4 mt-4 px-4 pb-4">
+            <NavLink
+              to="/services"
+              onClick={closeMenu}
+              className={({ isActive }) =>
                 `nav-link ${isActive ? 'text-white font-semibold' : 'text-gray-300'}`
               }
             >
               Services
             </NavLink>
-            <NavLink 
+            <NavLink
               to="/pricing"
-              className={({ isActive }) => 
+              onClick={closeMenu}
+              className={({ isActive }) =>
                 `nav-link ${isActive ? 'text-white font-semibold' : 'text-gray-300'}`
               }
             >
               Pricing
             </NavLink>
-            <NavLink 
+            <NavLink
               to="/about"
-              className={({ isActive }) => 
+              onClick={closeMenu}
+              className={({ isActive }) =>
                 `nav-link ${isActive ? 'text-white font-semibold' : 'text-gray-300'}`
               }
             >
               About
             </NavLink>
-            <NavLink 
+            <NavLink
               to="/contact"
-              className={({ isActive }) => 
+              onClick={closeMenu}
+              className={({ isActive }) =>
                 `nav-link ${isActive ? 'text-white font-semibold' : 'text-gray-300'}`
               }
             >

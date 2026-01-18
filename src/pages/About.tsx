@@ -3,10 +3,10 @@ import { motion } from 'framer-motion';
 import { Zap, Rocket, Target, Users, Code2, Award } from 'lucide-react';
 
 const stats = [
-  { icon: <Rocket size={32} />, value: '100+', label: 'MVPs Launched' },
+  { icon: <Rocket size={32} />, value: '15+', label: 'MVPs Launched' },
   { icon: <Zap size={32} />, value: '30 Days', label: 'Average Timeline' },
-  { icon: <Target size={32} />, value: '98%', label: 'Founder Satisfaction' },
-  { icon: <Users size={32} />, value: '50+', label: 'Funded Startups' }
+  { icon: <Target size={32} />, value: '100%', label: 'Client Satisfaction' },
+  { icon: <Users size={32} />, value: '$10M+', label: 'Client Funding Raised' }
 ];
 
 
@@ -22,9 +22,9 @@ export function About() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl font-bold mb-6">We Build Web MVPs with AI</h1>
+          <h1 className="text-5xl font-bold mb-6">We Ship Production-Ready MVPs</h1>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            GetUrStyle is a team of specialized web + AI engineers laser-focused on one thing: launching production-ready web MVPs with integrated AI faster than any company in the market.
+            GetUrStyle is a team of engineers who specialize in building and launching MVPs for early-stage startups. We write real, scalable code — architected for growth from day one.
           </p>
         </motion.div>
 
@@ -55,10 +55,10 @@ export function About() {
           >
             <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
             <p className="text-gray-300 mb-4">
-              We eliminate the biggest risk for startup founders: time-to-market. By specializing exclusively in web + AI MVP development, we've perfected a process that delivers production-ready software in 30 days or less.
+              We eliminate the biggest risk for startup founders: time-to-market. By specializing exclusively in MVP development, we've perfected a process that delivers production-ready software in 30 days or less.
             </p>
             <p className="text-gray-300">
-              We use modern LLM APIs to integrate AI seamlessly into every MVP. No fluff. No agency overhead. No compromises on code quality. Just web engineers and AI specialists who live and breathe startups.
+              We build with modern tech stacks — React, Node, Python, cloud infrastructure — and integrate AI where it adds real value. No agency overhead. No compromises on code quality. Just engineers who understand startups.
             </p>
           </motion.div>
 
@@ -72,19 +72,19 @@ export function About() {
             <ul className="space-y-4 text-gray-300">
               <li className="flex items-start">
                 <Code2 className="text-blue-500 mr-3 mt-1 flex-shrink-0" size={24} />
-                <span><strong>Web + AI focus</strong> means we leverage LLM APIs for competitive advantage</span>
+                <span><strong>Full-stack expertise</strong> — we handle frontend, backend, databases, and deployment</span>
               </li>
               <li className="flex items-start">
                 <Zap className="text-blue-500 mr-3 mt-1 flex-shrink-0" size={24} />
-                <span><strong>Battle-tested process</strong> from 100+ web + AI MVP launches</span>
+                <span><strong>Battle-tested process</strong> refined over 15+ successful MVP launches</span>
               </li>
               <li className="flex items-start">
                 <Award className="text-blue-500 mr-3 mt-1 flex-shrink-0" size={24} />
-                <span><strong>Expert engineers</strong> who specialize in startup speed and modern AI</span>
+                <span><strong>Senior engineers</strong> who've built products used by thousands</span>
               </li>
               <li className="flex items-start">
                 <Target className="text-blue-500 mr-3 mt-1 flex-shrink-0" size={24} />
-                <span><strong>Results-driven</strong> approach—your MVP, your way, on time, with AI built-in</span>
+                <span><strong>Results-driven</strong> — your MVP ships on time, every time</span>
               </li>
             </ul>
           </motion.div>
